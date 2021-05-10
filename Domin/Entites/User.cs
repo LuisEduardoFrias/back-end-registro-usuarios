@@ -1,11 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Domin
+namespace Domin.Entites
 {
-    public class Users
+    public class User
     {
+        [Key]
+        public int Id { get; set; }
+
         [Column(TypeName = "varchar(25)")]
         [Required]
         public string Name { get; set; }
@@ -24,7 +28,7 @@ namespace Domin
 
         [Column(TypeName = "date")]
         [Required]
-        public string DateBirth { get; set; }
+        public DateTime DateBirth { get; set; }
 
         [Column(TypeName = "varchar(20)")]
         [Required]
