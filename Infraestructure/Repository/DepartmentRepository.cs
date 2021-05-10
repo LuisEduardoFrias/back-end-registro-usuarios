@@ -8,9 +8,9 @@ using Infraestructure.Insterface;
 
 namespace Infraestructure.Repository
 {
-    public class DepartamentRepository : BaseRepository, IRepository<Department>
+    public class DepartmentRepository : BaseRepository, IRepository<Department>
     {
-        public DepartamentRepository(UserRegistrationDbContext context) : base(context)
+        public DepartmentRepository(UserRegistrationDbContext context) : base(context)
         {}
 
         public IQueryable<Department> Get()

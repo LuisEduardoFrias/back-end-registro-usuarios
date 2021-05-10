@@ -4,14 +4,16 @@ using Infraestructure.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace back_end_registro_usuarios.Migrations
 {
     [DbContext(typeof(UserRegistrationDbContext))]
-    partial class UserRegistrationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210510174315_modifying_the_user_entity")]
+    partial class modifying_the_user_entity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,7 +45,7 @@ namespace back_end_registro_usuarios.Migrations
                     b.Property<DateTime>("DateBirth")
                         .HasColumnType("date");
 
-                    b.Property<int>("DepartmentId")
+                    b.Property<int?>("DepartmentCode")
                         .HasColumnType("int");
 
                     b.Property<string>("Gender")
@@ -72,7 +74,7 @@ namespace back_end_registro_usuarios.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DepartmentId");
+                    b.HasIndex("DepartmentCode");
 
                     b.ToTable("Users");
                 });
@@ -81,9 +83,7 @@ namespace back_end_registro_usuarios.Migrations
                 {
                     b.HasOne("Domin.Entites.Department", "Department")
                         .WithMany()
-                        .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DepartmentCode");
 
                     b.Navigation("Department");
                 });

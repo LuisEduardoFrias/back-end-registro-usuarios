@@ -5,6 +5,7 @@ namespace Infraestructure.DataAccess
 {
     public class UserRegistrationDbContext : DbContext
     {
+
         #region Properties
 
         public DbSet<User> Users { get; set; }

@@ -1,15 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Domin.Entites
+namespace Domin.Dtos
 {
-    public class Department
+    public class DepartmentDto
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Key]
+        [Required]
         public int Code { get; set; }
-
-        [Column(TypeName = "varchar(25)")]
+        
         [Required]
         public string Name { get; set; }
     }

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 //
 using Domin.Entites;
 using Infraestructure.DataAccess;
@@ -15,7 +16,7 @@ namespace Infraestructure.Repository
 
         public IQueryable<User> Get()
         {
-            return Context.Users;
+            return Context.Users.Include(x => x.Department);
         }
 
         public async Task<bool> Post(User user)

@@ -1,11 +1,9 @@
+using back_end_registro_usuarios.Extencions;
+using Infraestructure.DataAccess;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace back_end_registro_usuarios
 {
@@ -13,7 +11,25 @@ namespace back_end_registro_usuarios
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+
+            using (var serviceScope = host.Services.CreateScope())
+            {
+                var services = serviceScope.ServiceProvider;
+                var dbConfigContext = services.GetRequiredService<UserRegistrationDbContext>();
+
+                if (!dbConfigContext.Database.CanConnect())
+                {
+                    dbConfigContext.Database.Migrate();
+                }
+
+                if (dbConfigContext.IsDataFetched() != DBState.Fetched)
+                {
+                    dbConfigContext.FetchDataBase();
+                }
+            }
+
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

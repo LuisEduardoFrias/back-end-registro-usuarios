@@ -1,20 +1,15 @@
+using back_end_registro_usuarios.MapConfiguration;
 using Domin.Entites;
 using Infraestructure.DataAccess;
 using Infraestructure.Insterface;
 using Infraestructure.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace back_end_registro_usuarios
 {
@@ -30,12 +25,14 @@ namespace back_end_registro_usuarios
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<UserRegistrationDbContext>(op => 
+            services.AddDbContext<UserRegistrationDbContext>(op =>
             op.UseSqlServer(Configuration.GetConnectionString("defaultConnection"), sql =>
             sql.MigrationsAssembly("back-end-registro-usuarios")));
 
+            services.AddSingleton(new AutoMapper.MapperConfiguration(conf => conf.AddProfile(typeof(MapperConfiguration))).CreateMapper());
+
             services.AddTransient<IRepository<User>, UserRepository>();
-            services.AddTransient<IRepository<Department>, DepartamentRepository>();
+            services.AddTransient<IRepository<Department>, DepartmentRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
