@@ -37,7 +37,7 @@ namespace back_end_registro_usuarios
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "back_end_registro_usuarios", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Registro de usuarios", Version = "v1" });
             });
         }
 
@@ -48,7 +48,7 @@ namespace back_end_registro_usuarios
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "back_end_registro_usuarios v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Registro de usuarios v1"));
             }
 
             app.UseRouting();
