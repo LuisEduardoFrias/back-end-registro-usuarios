@@ -3,11 +3,12 @@ using System.Threading.Tasks;
 //
 using Domin.Entites;
 using Infraestructure.DataAccess;
+using Infraestructure.Insterface;
 //
 
 namespace Infraestructure.Repository
 {
-    public class DepartamentRepository : BaseRepository
+    public class DepartamentRepository : BaseRepository, IRepository<Department>
     {
         public DepartamentRepository(UserRegistrationDbContext context) : base(context)
         {}

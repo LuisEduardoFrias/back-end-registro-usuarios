@@ -3,11 +3,12 @@ using System.Threading.Tasks;
 //
 using Domin.Entites;
 using Infraestructure.DataAccess;
+using Infraestructure.Insterface;
 //
 
 namespace Infraestructure.Repository
 {
-    public class UserRepository : BaseRepository
+    public class UserRepository : BaseRepository, IRepository<User>
     {
         public UserRepository(UserRegistrationDbContext context) : base(context)
         {}
@@ -23,5 +24,6 @@ namespace Infraestructure.Repository
 
             return (await Context.SaveChangesAsync()) >= 1;
         }
+
     }
 }

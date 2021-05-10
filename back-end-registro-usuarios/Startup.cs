@@ -1,4 +1,7 @@
+using Domin.Entites;
 using Infraestructure.DataAccess;
+using Infraestructure.Insterface;
+using Infraestructure.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -31,6 +34,8 @@ namespace back_end_registro_usuarios
             op.UseSqlServer(Configuration.GetConnectionString("defaultConnection"), sql =>
             sql.MigrationsAssembly("back-end-registro-usuarios")));
 
+            services.AddTransient<IRepository<User>, UserRepository>();
+            services.AddTransient<IRepository<Department>, DepartamentRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
