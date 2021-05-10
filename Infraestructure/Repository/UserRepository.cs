@@ -1,13 +1,11 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using UserRegistration.Domin.Entites;
+using UserRegistration.Infraestructure.DataAccess;
+using UserRegistration.Infraestructure.Insterface;
 using Microsoft.EntityFrameworkCore;
-//
-using Domin.Entites;
-using Infraestructure.DataAccess;
-using Infraestructure.Insterface;
-//
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Infraestructure.Repository
+namespace UserRegistration.Infraestructure.Repository
 {
     public class UserRepository : BaseRepository, IRepository<User>
     {
@@ -16,15 +14,14 @@ namespace Infraestructure.Repository
 
         public IQueryable<User> Get()
         {
-            return Context.Users.Include(x => x.Department);
+            return context.Users.Include(x => x.Department);
         }
 
-        public async Task<bool> Post(User user)
+        public async Task<bool> PostAsync(User user)
         {
-            Context.Users.Add(user);
+            context.Users.Add(user);
 
-            return (await Context.SaveChangesAsync()) >= 1;
+            return (await context.SaveChangesAsync()) >= 1;
         }
-
     }
 }

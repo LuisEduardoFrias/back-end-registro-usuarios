@@ -1,14 +1,14 @@
-﻿using Infraestructure.DataAccess;
+﻿using UserRegistration.Infraestructure.DataAccess;
 
-namespace Infraestructure.Repository
+namespace UserRegistration.Infraestructure.Repository
 {
     public class BaseRepository
     {
-        public readonly UserRegistrationDbContext Context;
+        public readonly UserRegistrationDbContext context;
 
         public BaseRepository(UserRegistrationDbContext context)
         {
-            Context = context;
+            context = context;
         }
     }
 }

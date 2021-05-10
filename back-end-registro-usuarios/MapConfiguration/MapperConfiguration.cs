@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using Domin.Dtos;
-using Domin.Entites;
+using UserRegistration.Domin.Dtos;
+using UserRegistration.Domin.Entites;
 
 namespace back_end_registro_usuarios.MapConfiguration
 {

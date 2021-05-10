@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using UserRegistration.Infraestructure.DataAccess;
 using System.Linq;
-//
-using Infraestructure.DataAccess;
-using System.Threading.Tasks;
-//
+
 
 namespace back_end_registro_usuarios.Extencions
 {
@@ -37,7 +35,7 @@ namespace back_end_registro_usuarios.Extencions
 
             if (!context.Departments.Any())
             {
-                context.Departments.Add(new Domin.Entites.Department { Code = 1, Name = "Developer" });
+                context.Departments.Add(new UserRegistration.Domin.Entites.Department { Code = 1, Name = "Developer" });
                 context.SaveChanges();
             }
         }

@@ -1,8 +1,8 @@
 using back_end_registro_usuarios.MapConfiguration;
-using Domin.Entites;
-using Infraestructure.DataAccess;
-using Infraestructure.Insterface;
-using Infraestructure.Repository;
+using UserRegistration.Domin.Entites;
+using UserRegistration.Infraestructure.DataAccess;
+using UserRegistration.Infraestructure.Insterface;
+using UserRegistration.Infraestructure.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using UserRegistration.Application;
 
 namespace back_end_registro_usuarios
 {
@@ -33,6 +34,9 @@ namespace back_end_registro_usuarios
 
             services.AddTransient<IRepository<User>, UserRepository>();
             services.AddTransient<IRepository<Department>, DepartmentRepository>();
+
+            services.AddTransient<UserApplication>();
+            services.AddTransient<DepartmentApplication>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

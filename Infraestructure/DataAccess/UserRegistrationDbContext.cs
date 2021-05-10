@@ -1,7 +1,7 @@
-﻿using Domin.Entites;
+﻿using UserRegistration.Domin.Entites;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infraestructure.DataAccess
+namespace UserRegistration.Infraestructure.DataAccess
 {
     public class UserRegistrationDbContext : DbContext
     {

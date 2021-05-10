@@ -1,12 +1,10 @@
-﻿using System.Linq;
+﻿using UserRegistration.Domin.Entites;
+using UserRegistration.Infraestructure.DataAccess;
+using UserRegistration.Infraestructure.Insterface;
+using System.Linq;
 using System.Threading.Tasks;
-//
-using Domin.Entites;
-using Infraestructure.DataAccess;
-using Infraestructure.Insterface;
-//
 
-namespace Infraestructure.Repository
+namespace UserRegistration.Infraestructure.Repository
 {
     public class DepartmentRepository : BaseRepository, IRepository<Department>
     {
@@ -15,14 +13,14 @@ namespace Infraestructure.Repository
 
         public IQueryable<Department> Get()
         {
-            return Context.Departments;
+            return context.Departments;
         }
 
-        public async Task<bool> Post(Department department)
+        public async Task<bool> PostAsync(Department department)
         {
-            Context.Departments.Add(department);
+            context.Departments.Add(department);
 
-            return (await Context.SaveChangesAsync()) >= 1;
+            return (await context.SaveChangesAsync()) >= 1;
         }
     }
 }

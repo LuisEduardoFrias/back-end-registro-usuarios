@@ -1,5 +1,5 @@
 using back_end_registro_usuarios.Extencions;
-using Infraestructure.DataAccess;
+using UserRegistration.Infraestructure.DataAccess;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
