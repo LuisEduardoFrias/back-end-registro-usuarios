@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UserRegistration.Infraestructure.DataAccess;
 
 namespace UserRegistration.Api.Migrations
 {
     [DbContext(typeof(UserRegistrationDbContext))]
-    partial class UserRegistrationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210510230848_modified_users_entity_birt_Day_and_last_name_fields")]
+    partial class modified_users_entity_birt_Day_and_last_name_fields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
