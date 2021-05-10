@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>back_end_registro_usuarios</RootNamespace>
+    <RootNamespace>UserRegistration.Api</RootNamespace>
+    <AssemblyName>UserRegistration.Api</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Domin\UserRegistration.Domin.csproj" />
+    <ProjectReference Include="..\Domin\UserRegistration.Domain.csproj" />
     <ProjectReference Include="..\RegistroUsuarios.Application\UserRegistration.Application.csproj" />
   </ItemGroup>
 

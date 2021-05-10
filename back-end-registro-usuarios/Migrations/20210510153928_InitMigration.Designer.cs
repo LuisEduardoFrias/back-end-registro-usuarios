@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace back_end_registro_usuarios.Migrations
+namespace UserRegistration.Api.Migrations
 {
     [DbContext(typeof(UserRegistrationDbContext))]
     [Migration("20210510153928_InitMigration")]

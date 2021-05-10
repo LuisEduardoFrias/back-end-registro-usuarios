@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace back_end_registro_usuarios.Migrations
+namespace UserRegistration.Api.Migrations
 {
     [DbContext(typeof(UserRegistrationDbContext))]
     partial class UserRegistrationDbContextModelSnapshot : ModelSnapshot

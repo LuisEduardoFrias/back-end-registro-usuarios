@@ -1,11 +1,12 @@
-using back_end_registro_usuarios.Extencions;
-using UserRegistration.Infraestructure.DataAccess;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using UserRegistration.Api.Enums;
+using UserRegistration.Api.Extencions;
+using UserRegistration.Infraestructure.DataAccess;
 
-namespace back_end_registro_usuarios
+namespace UserRegistration.Api
 {
     public class Program
     {

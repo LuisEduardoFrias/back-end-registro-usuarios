@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserRegistration.Domin", "Domin\UserRegistration.Domin.csproj", "{5696E916-E65D-4D86-AC47-3C2C382869B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserRegistration.Domain", "Domin\UserRegistration.Domain.csproj", "{5696E916-E65D-4D86-AC47-3C2C382869B7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserRegistration.Infraestructure", "Infraestructure\UserRegistration.Infraestructure.csproj", "{7BF863D7-C209-47B4-A071-9E89154CF47E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserRegistration.Api", "back-end-registro-usuarios\UserRegistration.Api.csproj", "{0986EC4D-81D5-46EF-A4F0-1770948D5464}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserRegistration.Application", "RegistroUsuarios.Application\UserRegistration.Application.csproj", "{C27CD79C-E2D6-4A21-9CE1-7BD21B5B8E7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserRegistration.Application", "RegistroUsuarios.Application\UserRegistration.Application.csproj", "{C27CD79C-E2D6-4A21-9CE1-7BD21B5B8E7D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

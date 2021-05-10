@@ -8,7 +8,7 @@ namespace UserRegistration.Infraestructure.Repository
 
         public BaseRepository(UserRegistrationDbContext context)
         {
-            context = context;
+            this.context = context;
         }
     }
 }

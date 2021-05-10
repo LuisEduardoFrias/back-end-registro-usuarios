@@ -1,16 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using UserRegistration.Infraestructure.DataAccess;
 using System.Linq;
+using UserRegistration.Api.Enums;
+using UserRegistration.Infraestructure.DataAccess;
 
-
-namespace back_end_registro_usuarios.Extencions
+namespace UserRegistration.Api.Extencions
 {
-    public enum DBState
-    {
-        Fetched,
-        Unfetched,
-        Unmigrated
-    }
 
     public static class DbContextExtencion
     {

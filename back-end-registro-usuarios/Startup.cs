@@ -1,4 +1,4 @@
-using back_end_registro_usuarios.MapConfiguration;
+using UserRegistration.Api.MapConfiguration;
 using UserRegistration.Domin.Entites;
 using UserRegistration.Infraestructure.DataAccess;
 using UserRegistration.Infraestructure.Insterface;
@@ -12,7 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using UserRegistration.Application;
 
-namespace back_end_registro_usuarios
+namespace UserRegistration.Api
 {
     public class Startup
     {
@@ -23,12 +23,11 @@ namespace back_end_registro_usuarios
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<UserRegistrationDbContext>(op =>
             op.UseSqlServer(Configuration.GetConnectionString("defaultConnection"), sql =>
-            sql.MigrationsAssembly("back-end-registro-usuarios")));
+            sql.MigrationsAssembly("UserRegistration.Api")));
 
             services.AddSingleton(new AutoMapper.MapperConfiguration(conf => conf.AddProfile(typeof(MapperConfiguration))).CreateMapper());
 
@@ -45,7 +44,6 @@ namespace back_end_registro_usuarios
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

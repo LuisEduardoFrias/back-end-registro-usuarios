@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace back_end_registro_usuarios.Migrations
+namespace UserRegistration.Api.Migrations
 {
     public partial class modifying_the_user_entity : Migration
     {

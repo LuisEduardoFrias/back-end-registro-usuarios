@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace back_end_registro_usuarios.Migrations
+namespace UserRegistration.Api.Migrations
 {
     public partial class InitMigration : Migration
     {

@@ -13,6 +13,5 @@ namespace UserRegistration.Application
             this.repository = repository;
             this.mapper = mapper;
         }
-
     }
 }

@@ -21,6 +21,5 @@ namespace UserRegistration.Infraestructure.DataAccess
         {
             base.OnModelCreating(builder);
         }
-
     }
 }
