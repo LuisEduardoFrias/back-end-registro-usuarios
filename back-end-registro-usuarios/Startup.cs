@@ -1,6 +1,11 @@
+using Domin.Entites;
+using Infraestructure.DataAccess;
+using Infraestructure.Insterface;
+using Infraestructure.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,6 +30,12 @@ namespace back_end_registro_usuarios
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<UserRegistrationDbContext>(op => 
+            op.UseSqlServer(Configuration.GetConnectionString("defaultConnection"), sql =>
+            sql.MigrationsAssembly("back-end-registro-usuarios")));
+
+            services.AddTransient<IRepository<User>, UserRepository>();
+            services.AddTransient<IRepository<Department>, DepartamentRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
