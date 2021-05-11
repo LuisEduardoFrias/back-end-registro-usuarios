@@ -25,6 +25,17 @@ namespace UserRegistration.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(setupAction =>
+            {
+                setupAction.AddDefaultPolicy(policy =>
+                {
+                    policy
+                    .AllowAnyOrigin()
+                    .WithHeaders(new string[] { "Accept", "Content-Type" })
+                    .WithMethods(new string[] { "HttpPost", "HttpGet", "HttpPut", "HttpPatch" });
+                });
+            });
+
             services.AddDbContext<UserRegistrationDbContext>(op =>
             op.UseSqlServer(Configuration.GetConnectionString("defaultConnection"), sql =>
             sql.MigrationsAssembly("UserRegistration.Api")));
@@ -54,6 +65,8 @@ namespace UserRegistration.Api
             }
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 
