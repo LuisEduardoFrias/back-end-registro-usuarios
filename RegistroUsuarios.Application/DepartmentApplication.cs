@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using UserRegistration.Domin.Dtos;
-using UserRegistration.Domin.Entites;
-using UserRegistration.Infraestructure.Insterface;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using UserRegistration.Domain.Dtos.department;
+using UserRegistration.Domain.Entites;
+using UserRegistration.Infraestructure.Insterface;
 
 namespace UserRegistration.Application
 {
@@ -25,5 +25,10 @@ namespace UserRegistration.Application
             return await repository.PostAsync(mapper.Map<Department>(departmentDto));
         }
 
+
+        public async Task<bool> PutAsync(DepartmentDto departmentDto)
+        {
+            return await repository.PutAsync(mapper.Map<Department>(departmentDto));
+        }
     }
 }

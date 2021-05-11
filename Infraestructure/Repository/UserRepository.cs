@@ -1,4 +1,4 @@
-﻿using UserRegistration.Domin.Entites;
+﻿using UserRegistration.Domain.Entites;
 using UserRegistration.Infraestructure.DataAccess;
 using UserRegistration.Infraestructure.Insterface;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +20,15 @@ namespace UserRegistration.Infraestructure.Repository
         public async Task<bool> PostAsync(User user)
         {
             context.Users.Add(user);
+
+            return (await context.SaveChangesAsync()) >= 1;
+        }
+        
+        public async Task<bool> PutAsync(User user)
+        {
+            User userDb = await context.Users.FirstOrDefaultAsync(x => x.Id == user.Id);
+
+            userDb = user;
 
             return (await context.SaveChangesAsync()) >= 1;
         }

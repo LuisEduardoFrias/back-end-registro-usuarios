@@ -1,4 +1,4 @@
-﻿using UserRegistration.Domin.Entites;
+﻿using UserRegistration.Domain.Entites;
 using Microsoft.EntityFrameworkCore;
 
 namespace UserRegistration.Infraestructure.DataAccess

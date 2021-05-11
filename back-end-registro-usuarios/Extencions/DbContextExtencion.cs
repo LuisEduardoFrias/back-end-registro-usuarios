@@ -29,7 +29,7 @@ namespace UserRegistration.Api.Extencions
 
             if (!context.Departments.Any())
             {
-                context.Departments.Add(new UserRegistration.Domin.Entites.Department { Code = 1, Name = "Developer" });
+                context.Departments.Add(new UserRegistration.Domain.Entites.Department { Code = 1, Name = "Developer" });
                 context.SaveChanges();
             }
         }

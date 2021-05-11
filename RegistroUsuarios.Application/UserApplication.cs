@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using UserRegistration.Domin.Dtos;
-using UserRegistration.Domin.Entites;
-using UserRegistration.Infraestructure.Insterface;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using UserRegistration.Domain.Dtos.user;
+using UserRegistration.Domain.Entites;
+using UserRegistration.Infraestructure.Insterface;
 
 namespace UserRegistration.Application
 {
@@ -23,6 +23,12 @@ namespace UserRegistration.Application
         public async Task<bool> PostAsync(CreateUserDto userDto)
         {
             return await repository.PostAsync(mapper.Map<User>(userDto));
+        }
+
+
+        public async Task<bool> PutAsync(UpdateUserDto userDto)
+        {
+            return await repository.PutAsync(mapper.Map<User>(userDto));
         }
     }
 }

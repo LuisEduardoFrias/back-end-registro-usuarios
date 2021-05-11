@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace UserRegistration.Domin.Entites
+namespace UserRegistration.Domain.Entites
 {
     public class Department
     {

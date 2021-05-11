@@ -1,8 +1,3 @@
-using UserRegistration.Api.MapConfiguration;
-using UserRegistration.Domin.Entites;
-using UserRegistration.Infraestructure.DataAccess;
-using UserRegistration.Infraestructure.Insterface;
-using UserRegistration.Infraestructure.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +5,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using UserRegistration.Api.MapConfiguration;
 using UserRegistration.Application;
+using UserRegistration.Domain.Entites;
+using UserRegistration.Infraestructure.DataAccess;
+using UserRegistration.Infraestructure.Insterface;
+using UserRegistration.Infraestructure.Repository;
 
 namespace UserRegistration.Api
 {

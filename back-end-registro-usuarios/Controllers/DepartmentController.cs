@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UserRegistration.Application;
-using UserRegistration.Domin.Dtos;
+using UserRegistration.Domain.Dtos.department;
 
 namespace UserRegistration.Api.Controllers
 {
@@ -30,6 +30,15 @@ namespace UserRegistration.Api.Controllers
         public async Task<ActionResult> PostAsync(DepartmentDto departmentDto)
         {
             bool result = await _departmaentApplication.PostAsync(departmentDto);
+
+            return result ? NoContent() : throw new System.Exception("An error occurred while saving the record.");
+        }
+
+
+        [HttpPut]
+        public async Task<ActionResult> PutAsync(DepartmentDto DepartmentDto)
+        {
+            bool result = await _departmaentApplication.PutAsync(DepartmentDto);
 
             return result ? NoContent() : throw new System.Exception("An error occurred while saving the record.");
         }

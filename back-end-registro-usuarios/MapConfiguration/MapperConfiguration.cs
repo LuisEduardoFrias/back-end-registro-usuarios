@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using UserRegistration.Domin.Dtos;
-using UserRegistration.Domin.Entites;
+using UserRegistration.Domain.Dtos.department;
+using UserRegistration.Domain.Dtos.user;
+using UserRegistration.Domain.Entites;
 
 namespace UserRegistration.Api.MapConfiguration
 {
@@ -9,6 +10,7 @@ namespace UserRegistration.Api.MapConfiguration
         public MapperConfiguration()
         {
             CreateMap<CreateUserDto, User>();
+            CreateMap<UpdateUserDto, User>();
             CreateMap<User, ShowUserDto>();
 
             CreateMap<Department, DepartmentDto>();

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace UserRegistration.Domin.Dtos
+namespace UserRegistration.Domain.Dtos.department
 {
     public class DepartmentDto
     {

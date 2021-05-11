@@ -9,5 +9,7 @@ namespace UserRegistration.Infraestructure.Insterface
         IQueryable<T> Get();
 
         Task<bool> PostAsync(T user);
+
+        Task<bool> PutAsync(T user);
     }
 }

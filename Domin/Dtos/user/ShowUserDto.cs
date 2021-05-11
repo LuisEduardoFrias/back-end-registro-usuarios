@@ -1,4 +1,4 @@
-﻿namespace UserRegistration.Domin.Dtos
+﻿namespace UserRegistration.Domain.Dtos.user
 {
     public class ShowUserDto : CreateUserDto
     {

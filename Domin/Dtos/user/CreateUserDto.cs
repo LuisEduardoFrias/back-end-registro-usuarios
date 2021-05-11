@@ -1,8 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using UserRegistration.Domain.Dtos.department;
 
-namespace UserRegistration.Domin.Dtos
+namespace UserRegistration.Domain.Dtos.user
 {
     public class CreateUserDto
     {
