@@ -28,7 +28,7 @@ namespace UserRegistration.Api.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult> Port(CreateUserDto userDto)
+        public async Task<ActionResult> PostAsync(CreateUserDto userDto)
         {
             bool result = await _userApplication.PostAsync(userDto);
 
