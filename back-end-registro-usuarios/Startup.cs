@@ -23,6 +23,7 @@ namespace UserRegistration.Api
 
         public IConfiguration Configuration { get; }
 
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors(setupAction =>
@@ -30,14 +31,15 @@ namespace UserRegistration.Api
                 setupAction.AddDefaultPolicy(policy =>
                 {
                     policy
-                    .AllowAnyOrigin()
-                    .WithHeaders(new string[] { "Accept", "Content-Type" })
+                    .WithOrigins(new string[] { "http://localhost:43336/api/user" })
+                    .WithHeaders(new string[] { "Accept", "Content-Type", "Access-Control-Allow-Origin" })
                     .WithMethods(new string[] { "HttpPost", "HttpGet", "HttpPut", "HttpPatch" });
                 });
             });
 
             services.AddDbContext<UserRegistrationDbContext>(op =>
-            op.UseSqlServer(Configuration.GetConnectionString("defaultConnection"), sql =>
+            op.UseSqlServer(Configuration.GetConnectionString("HomeConnection"), sql =>
+            //op.UseSqlServer(Configuration.GetConnectionString("JobConnection"), sql =>
             sql.MigrationsAssembly("UserRegistration.Api")));
 
             services.AddSingleton(new AutoMapper.MapperConfiguration(conf => conf.AddProfile(typeof(MapperConfiguration))).CreateMapper());

@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using UserRegistration.Domain.Entites;
 using UserRegistration.Infraestructure.DataAccess;
@@ -26,9 +25,7 @@ namespace UserRegistration.Infraestructure.Repository
 
         public async Task<bool> PutAsync(Department department)
         {
-            Department departmentDb = await context.Departments.FirstOrDefaultAsync(x => x.Code == department.Code);
-
-            departmentDb = department;
+            context.Departments.Update(department);
 
             return (await context.SaveChangesAsync()) >= 1;
         }

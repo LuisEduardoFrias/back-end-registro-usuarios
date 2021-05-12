@@ -26,11 +26,9 @@ namespace UserRegistration.Infraestructure.Repository
         
         public async Task<bool> PutAsync(User user)
         {
-            User userDb = await context.Users.FirstOrDefaultAsync(x => x.Id == user.Id);
+            context.Users.Update(user);
 
-            userDb = user;
-
-            return (await context.SaveChangesAsync()) >= 1;
+            return (await context.SaveChangesAsync()) == 1;
         }
     }
 }
