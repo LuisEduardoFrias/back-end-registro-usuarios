@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -24,22 +25,24 @@ namespace UserRegistration.Api
         public IConfiguration Configuration { get; }
 
 
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(setupAction =>
+            services.AddCors(options =>
             {
-                setupAction.AddDefaultPolicy(policy =>
-                {
-                    policy
-                    .WithOrigins(new string[] { "http://localhost:43336/api/user" })
-                    .WithHeaders(new string[] { "Accept", "Content-Type", "Access-Control-Allow-Origin" })
-                    .WithMethods(new string[] { "HttpPost", "HttpGet", "HttpPut", "HttpPatch" });
-                });
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  builder =>
+                                  {
+                                      builder.WithOrigins("http://localhost:4200")
+                                      .AllowAnyHeader()
+                                      .AllowAnyMethod();
+                                  });
             });
 
+
             services.AddDbContext<UserRegistrationDbContext>(op =>
-            op.UseSqlServer(Configuration.GetConnectionString("HomeConnection"), sql =>
-            //op.UseSqlServer(Configuration.GetConnectionString("JobConnection"), sql =>
+           // op.UseSqlServer(Configuration.GetConnectionString("HomeConnection"), sql =>
+            op.UseSqlServer(Configuration.GetConnectionString("JobConnection"), sql =>
             sql.MigrationsAssembly("UserRegistration.Api")));
 
             services.AddSingleton(new AutoMapper.MapperConfiguration(conf => conf.AddProfile(typeof(MapperConfiguration))).CreateMapper());
@@ -68,7 +71,7 @@ namespace UserRegistration.Api
 
             app.UseRouting();
 
-            app.UseCors();
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthorization();
 
