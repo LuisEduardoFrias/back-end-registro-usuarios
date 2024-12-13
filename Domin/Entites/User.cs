@@ -1,18 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Domin
+namespace UserRegistration.Domain.Entites
 {
-    public class Users
+    public class User
     {
+        [Key]
+        public int Id { get; set; }
+
         [Column(TypeName = "varchar(25)")]
         [Required]
         public string Name { get; set; }
 
         [Column(TypeName = "varchar(25)")]
         [Required]
-        public string LasName { get; set; }
+        public string LastName { get; set; }
 
         [Column(TypeName = "char(1)")]
         [Required]
@@ -24,7 +27,7 @@ namespace Domin
 
         [Column(TypeName = "date")]
         [Required]
-        public string DateBirth { get; set; }
+        public DateTime BirthDay { get; set; }
 
         [Column(TypeName = "varchar(20)")]
         [Required]
@@ -35,9 +38,9 @@ namespace Domin
         public string ImmediateSupervisor { get; set; }
 
         [Required]
-        public int Department { get; set; }
+        public int DepartmentId { get; set; }
 
-        [ForeignKey("Department")]
-        public ICollection<Department> Departments { get; set; }
+        [ForeignKey("DepartmentId")]
+        public Department Department { get; set; }
     }
 }

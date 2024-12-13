@@ -1,17 +1,19 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using UserRegistration.Api.MapConfiguration;
+using UserRegistration.Application;
+using UserRegistration.Domain.Entites;
+using UserRegistration.Infraestructure.DataAccess;
+using UserRegistration.Infraestructure.Insterface;
+using UserRegistration.Infraestructure.Repository;
 
-namespace back_end_registro_usuarios
+namespace UserRegistration.Api
 {
     public class Startup
     {
@@ -22,28 +24,54 @@ namespace back_end_registro_usuarios
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  builder =>
+                                  {
+                                      builder.WithOrigins("http://localhost:4200")
+                                      .AllowAnyHeader()
+                                      .AllowAnyMethod();
+                                  });
+            });
+
+
+            services.AddDbContext<UserRegistrationDbContext>(op =>
+           // op.UseSqlServer(Configuration.GetConnectionString("HomeConnection"), sql =>
+            op.UseSqlServer(Configuration.GetConnectionString("JobConnection"), sql =>
+            sql.MigrationsAssembly("UserRegistration.Api")));
+
+            services.AddSingleton(new AutoMapper.MapperConfiguration(conf => conf.AddProfile(typeof(MapperConfiguration))).CreateMapper());
+
+            services.AddTransient<IRepository<User>, UserRepository>();
+            services.AddTransient<IRepository<Department>, DepartmentRepository>();
+
+            services.AddTransient<UserApplication>();
+            services.AddTransient<DepartmentApplication>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "back_end_registro_usuarios", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Registro de usuarios", Version = "v1" });
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "back_end_registro_usuarios v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Registro de usuarios v1"));
             }
 
             app.UseRouting();
+
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthorization();
 
